@@ -61,16 +61,12 @@ const PartnerVariant01 = ({ data = {}, index }) => {
               {data.repeater.map((elem, index) => {
                 if (!elem) return null;
                 const image = elem?.image;
-                const imageObj =
-                  image && image._ref
-                    ? {
-                        src: urlFor(image).url(),
-                        alt: image.alt || null,
-                      }
-                    : null;
-
-                if (!imageObj) return null;
-
+                const imageObj = image
+                  ? {
+                      src: urlFor(image).url(),
+                      alt: image.alt || null,
+                    }
+                  : null;
                 return (
                   <ConditionalBlurFade
                     key={index}

@@ -19,27 +19,20 @@ const Component = styled.div`
   }
 `;
 
-const PartnerLogo = ({
-  image = {
-    src: `https://cdn.sanity.io/images/7wjp505t/production/557ef7e282bccc41055f6c13e8978d5baa76e576-239x43.svg`,
-    alt: ``,
-  },
-  className,
-}) => {
+const PartnerLogo = ({ image, className }) => {
+  // Don't render if no valid image src
+  if (!image?.src) return null;
+
   return (
     <Component className={cn(`c__partner-logo relative`, className)}>
-      {image && (
-        <>
-          <Image
-            className="c__partner-logo__image w-auto h-auto"
-            src={image.src}
-            alt={image.alt || ``}
-            width={800}
-            height={800}
-            sizes="100vw"
-          />
-        </>
-      )}
+      <Image
+        className="c__partner-logo__image w-auto h-auto"
+        src={image.src}
+        alt={image.alt || ``}
+        width={800}
+        height={800}
+        sizes="100vw"
+      />
     </Component>
   );
 };
