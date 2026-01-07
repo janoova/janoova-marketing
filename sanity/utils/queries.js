@@ -193,14 +193,6 @@ export async function getSiteSettings() {
   return fetchSanity(
     groq`*[_type == "site_settings"][0]{
       ...,
-      favicon {
-        ... {
-          asset->,
-          hotspot,
-          crop,
-          alt
-        }
-      },
       logo {
         ... {
           asset->,
