@@ -3,10 +3,10 @@ import { css } from "styled-components";
 const BrandingTheme = css`
   :root {
     // Theme colors
-    --t-primary-branding-color: #ff914e;
-    --t-primary-branding-hover-color: rgb(255, 129, 51);
-    --t-secondary-branding-color: #025c66;
-    --t-secondary-branding-hover-color: rgb(1, 67, 74);
+    --t-primary-branding-color: #46062b;
+    --t-primary-branding-hover-color: #32051fff;
+    --t-secondary-branding-color: #03272a;
+    --t-secondary-branding-hover-color: #011618ff;
     // Buttons
     --t-button-padding: 0.575rem 1.7rem;
     --t-button-padding-large: 0.75rem 1.7rem;
