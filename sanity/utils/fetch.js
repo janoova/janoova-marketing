@@ -5,34 +5,23 @@ import { draftMode } from "next/headers";
 
 export { default as groq } from "groq";
 
-export function fetchSanity(query, params, nextOptions = {}) {
-  const preview = dev || draftMode().isEnabled;
+export async function fetchSanity(query, params, nextOptions = {}) {
+  const draft = await draftMode();
+  const preview = dev || draft.isEnabled;
   const fetchId = Math.random().toString(36).substring(7);
-
-  // console.log(`🚀 [${fetchId}] fetchSanity called:`, {
-  //   timestamp: new Date().toISOString(),
-  //   tags: nextOptions.tags,
-  //   preview,
-  // });
 
   const config = preview
     ? {
-        stega: true,
+        stega: { enabled: true, studioUrl: "/studio" },
         perspective: "previewDrafts",
         useCdn: false,
         token: process.env.SANITY_TOKEN,
-        next: {
-          revalidate: 0,
-          ...nextOptions,
-        },
+        next: { revalidate: 0, ...nextOptions },
       }
     : {
         perspective: "published",
         useCdn: false,
-        next: {
-          revalidate: 15000,
-          ...nextOptions,
-        },
+        next: { revalidate: 15000, ...nextOptions },
       };
 
   console.log(`🏷️  [${fetchId}] Cache config:`, {
