@@ -64,7 +64,7 @@ const CtaVariant02 = ({ data = {}, index }) => {
                     enabled={data.enable_animations}
                     delay={0}
                   >
-                    <div className="c__heading-wrapper mb-[0.5rem]">
+                    <div className="c__heading-wrapper mb-[1rem]">
                       <Heading
                         tag={data.heading_tag || "h2"}
                         className={`u__h1 mb-0`}
