@@ -63,7 +63,6 @@ const FeatureVariant03 = defineType({
             _type: "repeater_item",
             heading: `Card Heading`,
             description: `Gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet`,
-            button_title: "Learn More",
           })),
       of: [
         {
