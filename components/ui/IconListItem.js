@@ -52,7 +52,8 @@ const IconListItem = ({
         <div className="c__icon-list-item__column">
           {(icon?.src || iconSvg) && (
             <div
-              className={`c__icon-list-item__figure-wrapper !text-[${getCleanValue(iconColor)}]`}
+              className={`c__icon-list-item__figure-wrapper`}
+              style={{ color: iconColor }}
             >
               <figure className="m-0 inline">
                 {iconType === `image` && icon?.src && (
