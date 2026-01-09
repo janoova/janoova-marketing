@@ -23,11 +23,11 @@ const globalFont = Outfit({
   variable: "--t-font-family--outfit",
 });
 
-export const metadata = {
-  verification: {
-    google: "uye_V3mht9i4rFvdCAqu_K9cviI2TozmtTHVP-aRJK4",
-  },
-};
+// export const metadata = {
+//   verification: {
+//     google: "uye_V3mht9i4rFvdCAqu_K9cviI2TozmtTHVP-aRJK4",
+//   },
+// };
 
 export default function RootLayout({ children }) {
   return (
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         data-url={process.env.NEXT_PUBLIC_VERCEL_URL}
         data-prod-url={process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
       >
-        <GoogleTagManager gtmId="GTM-MF983CW" />
+        {/* <GoogleTagManager gtmId="GTM-MF983CW" /> */}
         <Suspense fallback={null}>
           <GTMTracker />
         </Suspense>
@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
         <HeadingTagsDisplay />
         <SmoothScrollHandler />
         <RouteSubmenuReset />
-        <Analytics />
+        {/* <Analytics /> */}
         {/* <TawkMessenger
           propertyId="68ced175c4e82919233cb870"
           widgetId="1j5ju4d5k"
