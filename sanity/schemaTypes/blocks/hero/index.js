@@ -6,6 +6,8 @@ import HeroVariant05 from "./HeroVariant05";
 import HeroVariant06 from "./HeroVariant06";
 import HeroVariant07 from "./HeroVariant07";
 import HeroVariant08 from "./HeroVariant08";
+import HeroVariant09 from "./HeroVariant09";
+import HeroVariant10 from "./HeroVariant10";
 
 export {
   HeroVariant01,
@@ -16,4 +18,6 @@ export {
   HeroVariant06,
   HeroVariant07,
   HeroVariant08,
+  HeroVariant09,
+  HeroVariant10,
 };

@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 import redirects from "./redirects.mjs";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
   async redirects() {
@@ -12,6 +17,15 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io", "ik.imagekit.io"],
   },
+  experimental: {
+    optimizePackageImports: [
+      "react-icons",
+      "lucide-react",
+      "@sanity/icons",
+      "motion",
+      "framer-motion",
+    ],
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

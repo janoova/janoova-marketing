@@ -11,12 +11,12 @@ import SmoothScrollHandler from "@/components/wrappers/SmoothScrollHandler";
 import RouteSubmenuReset from "@/components/wrappers/RouteSubmenuReset";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
-import TawkMessenger from "@/components/wrappers/TawkMessenger";
 import GTMTracker from "@/components/wrappers/GTMTracker";
 import { Suspense } from "react";
 import ForceRefreshLinks from "@/components/wrappers/ForceRefreshLinks";
-import FontSelector from "@/components/wrappers/FontSelector";
+import FontSelectorGate from "@/components/wrappers/FontSelectorGate";
 import DynamicFontLoader from "@/components/wrappers/DynamicFontLoader";
+import ThemeProvider from "@/components/wrappers/ThemeProvider";
 
 const globalFont = Outfit({
   subsets: ["latin"],
@@ -33,11 +33,16 @@ const globalFont = Outfit({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={globalFont.variable}>
+    <html lang="en" className={globalFont.variable} suppressHydrationWarning>
       <body
         data-url={process.env.NEXT_PUBLIC_VERCEL_URL}
         data-prod-url={process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
         {/* <GoogleTagManager gtmId="GTM-MF983CW" /> */}
         <Suspense fallback={null}>
           <GTMTracker />
@@ -49,14 +54,16 @@ export default function RootLayout({ children }) {
           zIndex={999999}
         />
         <StyledComponentsRegistry>
-          <GlobalStyles />
-          <Layout>{children}</Layout>
+          <ThemeProvider>
+            <GlobalStyles />
+            <Layout>{children}</Layout>
+          </ThemeProvider>
         </StyledComponentsRegistry>
         <VisualEditingControls />
         <HeadingTagsDisplay />
         <SmoothScrollHandler />
         <RouteSubmenuReset />
-        <FontSelector />
+        <FontSelectorGate />
         <DynamicFontLoader />
         {/* <Analytics /> */}
         {/* <TawkMessenger
