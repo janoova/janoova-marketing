@@ -219,6 +219,38 @@ export default defineType({
       group: "integrations",
     }),
     defineField({
+      name: "recaptcha_site_key",
+      title: "reCAPTCHA Site Key (v3)",
+      description: "Public site key from Google reCAPTCHA admin. Leave blank to disable reCAPTCHA.",
+      type: "string",
+      group: "integrations",
+    }),
+    defineField({
+      name: "recaptcha_secret_key",
+      title: "reCAPTCHA Secret Key (v3)",
+      description: "Secret key — only used server-side to verify submissions. Never exposed to the browser.",
+      type: "string",
+      group: "integrations",
+    }),
+    defineField({
+      name: "recaptcha_hide_badge",
+      title: "Hide reCAPTCHA Badge",
+      description: "Hides the floating reCAPTCHA badge. If enabled, you must include attribution text (e.g. 'Protected by reCAPTCHA') somewhere visible on the site.",
+      type: "boolean",
+      initialValue: false,
+      group: "integrations",
+    }),
+    defineField({
+      name: "recaptcha_min_score",
+      title: "reCAPTCHA Minimum Score",
+      description: "Submissions scoring below this threshold are rejected (0.0 = allow all, 1.0 = block all). Google recommends 0.5 as a baseline; 0.3 is more lenient for contact forms.",
+      type: "number",
+      initialValue: 0.3,
+      group: "integrations",
+      validation: (Rule) =>
+        Rule.min(0).max(1).precision(1),
+    }),
+    defineField({
       name: "enable_top_loader",
       title: "Enable Top Loader",
       description: "Show a progress bar at the top of the page on route changes.",
